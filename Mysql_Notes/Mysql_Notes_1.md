@@ -197,54 +197,156 @@ Uniquely identifies each record in a table
 Cannot be NULL and must be UNIQUE
 
 
-SHOW DATABASES;
---to show all the datbases available on your system.
+# MySQL – Content 2026 
+**Trainer:** SATYAM  
 
-USE <database name> ;
---to select a particular database to run queries on 
+---
 
+## 1. Database Commands
+
+### Select a Database
+```sql
+USE database_name;
+```
+*Used to select a particular database to run queries on.*
+
+---
+
+### Show All Tables
+```sql
 SHOW TABLES;
---to list down all the tables of a particular selected database
+```
+*Displays all tables present in the selected database.*
 
-CREATE DATABASE <name>;
--- to create a new database
+---
 
-CREATE TABLE <name> (
-    <column name 1> <datatype>,
-    <column name 2> <datatype>
+### Create a New Database
+```sql
+CREATE DATABASE database_name;
+```
+*Creates a new database.*
+
+---
+
+## 2. Table Commands
+
+### Create a Table
+```sql
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype
 );
+```
+*Creates a new table with specified columns and data types.*
 
--- to create a new table
+---
 
+### Describe a Table
+```sql
+DESC table_name;
+```
+*Shows structure, data types, and constraints of a table.*
 
-DESC <table name>;
--- show structure and description of the table
+---
 
-INSERT INTO <table name> (col1, col2, ...)
+## 3. Insert Data
+
+```sql
+INSERT INTO table_name (col1, col2, ...)
 VALUES (value1, value2, ...);
--- to store values in table
+```
+*Used to insert records into a table.*
 
-SELECT <column name> FROM <table name>;
--- to select a specific column data from a table
--- use * in place of column name to get all the columns.
+---
 
-SELECT * FROM <table name> WHERE <conditions>;
--- comparisson of column data with your values.
+## 4. Select Queries
 
-SELECT * FROM second WHERE DoB > '2000-01-01' AND Gender = 'Female';
+### Select Specific Columns
+```sql
+SELECT column_name FROM table_name;
+```
+*Fetches specific column data.*
 
-SELECT * FROM second ORDER BY DoB DESC;
+---
 
-SELECT * FROM second WHERE NOT Gender = 'Male';
+### Select All Columns
+```sql
+SELECT * FROM table_name;
+```
+*Fetches all columns from a table.*
 
-SELECT * FROM second WHERE DoB > '2020-01-03' OR Gender = 'Female';
+---
 
+### Select with WHERE Condition
+```sql
+SELECT * FROM table_name WHERE condition;
+```
+*Filters records based on conditions.*
 
-SELECT * FROM second WHERE Name LIKE 'a%';
+---
 
-SELECT * FROM second WHERE Name LIKE '%a%';
+## 5. Conditional Queries Examples
 
+### Using AND Operator
+```sql
+SELECT * FROM second
+WHERE DoB > '2000-01-01'
+AND Gender = 'Female';
+```
+
+---
+
+### Sorting Records
+```sql
+SELECT * FROM second
+ORDER BY DoB DESC;
+```
+
+---
+
+### Using NOT Operator
+```sql
+SELECT * FROM second
+WHERE NOT Gender = 'Male';
+```
+
+---
+
+### Using OR Operator
+```sql
+SELECT * FROM second
+WHERE DoB > '2020-01-03'
+OR Gender = 'Female';
+```
+
+---
+
+## 6. LIKE Operator (Pattern Matching)
+
+### Names Starting with 'a'
+```sql
+SELECT * FROM second
+WHERE Name LIKE 'a%';
+```
+*Finds names that start with letter 'a'.*
+
+---
+
+### Names Containing 'a'
+```sql
+SELECT * FROM second
+WHERE Name LIKE '%a%';
+```
+*Finds names that contain letter 'a' anywhere.*
+
+---
+
+## 7. ORDER BY with LIMIT
+
+```sql
 SELECT * FROM second
 WHERE Gender = 'Female'
 ORDER BY DoB DESC
 LIMIT 2;
+```
+*Fetches the latest two female records based on Date of Birth.*
